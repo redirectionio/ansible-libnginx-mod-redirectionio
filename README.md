@@ -15,7 +15,7 @@ ansible-galaxy install redirectionio.nginx_module
 
 ## Role vars
 
-This role does not provides vars.
+This role does not provide variables.
 
 ## Example playbook
 
