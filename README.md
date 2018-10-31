@@ -13,7 +13,7 @@ Simply run the following command:
 ansible-galaxy install redirectionio.nginx_module
 ```
 
-## Role vars
+## Role variables
 
 This role does not provide variables.
 
