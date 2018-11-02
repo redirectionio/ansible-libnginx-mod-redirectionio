@@ -11,7 +11,7 @@ galaxy_info:
         - xenial
         - artful
         - bionic
-        - cosmic
+        - cuttlefish
     - name: Debian
       versions:
         - stretch
