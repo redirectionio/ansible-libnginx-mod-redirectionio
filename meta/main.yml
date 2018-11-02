@@ -1,5 +1,6 @@
 ---
 galaxy_info:
+  role_name: 'nginx_module'
   author: 'redirection.io'
   description: Install redirectionio-nginx-module
   license: MIT
