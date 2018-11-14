@@ -2,7 +2,7 @@
 galaxy_info:
   role_name: 'nginx_module'
   author: 'redirection.io'
-  description: Install redirectionio-nginx-module
+  description: Install libnginx-mod-redirectionio
   license: MIT
   min_ansible_version: 1.6
   platforms:

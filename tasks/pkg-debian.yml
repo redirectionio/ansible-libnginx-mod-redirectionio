@@ -20,7 +20,7 @@
   apt:
     update_cache: true
 
-- name: Install redirectionio-nginx-module
+- name: Install libnginx-mod-redirectionio
   apt:
-    name: redirectionio-nginx-module
+    name: libnginx-mod-redirectionio
     state: latest
