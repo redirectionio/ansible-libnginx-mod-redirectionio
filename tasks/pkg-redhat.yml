@@ -5,11 +5,13 @@
     state: present
     key: http://keyserver.ubuntu.com/pks/lookup?op=get&fingerprint=on&search=0x24765BBD8E16EB44
 
-- set_fact:
+- name: Define distribution_repository_name
+  set_fact:
     distribution_repository_name: centos
   when: ansible_distribution != 'Fedora'
 
-- set_fact:
+- name: Define distribution_repository_name when the distribution is Fedora
+  set_fact:
     distribution_repository_name: fedora
   when: ansible_distribution == 'Fedora'
 
@@ -29,4 +31,4 @@
 - name: Install libnginx-mod-redirectionio
   yum:
     name: libnginx-mod-redirectionio
-    state: latest
+    state: present

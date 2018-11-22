@@ -23,4 +23,4 @@
 - name: Install libnginx-mod-redirectionio
   apt:
     name: libnginx-mod-redirectionio
-    state: latest
+    state: present
