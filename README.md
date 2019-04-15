@@ -1,5 +1,7 @@
 # Ansible redirectionio-nginx_module role
 
+redirection.io is a Web traffic redirection manager. It provides a collection of tools for website administrators, SEO agencies and developers, which help analyze HTTP errors, setup HTTP redirections and monitor the traffic efficiently.
+
 This role installs the [redirection.io](https://redirection.io/) nginx module. It supports Debian and RHEL-based Linux distributions.
 
 Once installed, the [redirection.io](https://redirection.io/) nginx module might be used in nginx Virtualhosts, as

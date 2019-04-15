@@ -3,7 +3,7 @@ galaxy_info:
   role_name: 'nginx_module'
   author: 'redirection.io'
   company: "redirection.io"
-  description: Install libnginx-mod-redirectionio
+  description: Install libnginx-mod-redirectionio. redirection.io is a versatile http redirection agent designed to help your SEO
   license: MIT
   min_ansible_version: 1.6
   platforms:
@@ -22,5 +22,8 @@ galaxy_info:
         - 7
         - 6
   galaxy_tags:
+    - http
     - monitoring
+    - nginx
+    - redirection
 dependencies: []
