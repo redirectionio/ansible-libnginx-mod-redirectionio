@@ -1,0 +1,4 @@
+---
+
+redirectionio_packages_url: https://packages.redirection.io/
+redirectionio_gpg_key_url: "{{ redirectionio_packages_url }}gpg.key"

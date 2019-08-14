@@ -5,7 +5,7 @@ redirection.io is a Web traffic redirection manager. It provides a collection of
 This role installs the [redirection.io](https://redirection.io/) nginx module. It supports Debian and RHEL-based Linux distributions.
 
 Once installed, the [redirection.io](https://redirection.io/) nginx module might be used in nginx Virtualhosts, as
-described [in the related documentation](https://redirection.io/documentation/developer-documentation/nginx-module).
+described [in the related documentation](https://redirection.io/documentation/developer-documentation/nginx-module#configuration).
 
 ## Installation
 

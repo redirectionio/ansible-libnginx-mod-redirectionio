@@ -7,13 +7,12 @@
 
 - name: import redirection.io apt key
   apt_key:
-    keyserver: keyserver.ubuntu.com
-    id: 24765BBD8E16EB44
+    url: "{{ redirectionio_gpg_key_url }}"
     state: present
 
 - name: Install redirection.io repository
   apt_repository:
-    repo: "deb https://packages.redirection.io/deb {{ ansible_distribution_release }} main"
+    repo: "deb {{ redirectionio_packages_url }}deb {{ ansible_distribution_release }} main"
     state: present
 
 - name: Update apt cache
