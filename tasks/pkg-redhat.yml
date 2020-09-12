@@ -23,17 +23,19 @@
     enabled: yes
     gpgcheck: yes
     state: present
-  when: redirectionio_nginx_module_channel == ""
+  when: redirectionio_nginx_module_channel|length == 0
 
 - name: Install redirection.io repository
   yum_repository:
     name: redirectionio
     description: redirection.io
-    baseurl: "{{ redirectionio_packages_url }}rpm/{{ redirectionio_nginx_module_channel }}/{{ redirectionio_nginx_module_main_version }}/{{ distribution_repository_name }}_{{ ansible_distribution_major_version }}"
+    baseurl: >
+      {{ redirectionio_packages_url }}rpm/{{ redirectionio_nginx_module_channel }}/{{ redirectionio_nginx_module_main_version }}/
+      {{ distribution_repository_name }}_{{ ansible_distribution_major_version }}
     enabled: yes
     gpgcheck: yes
     state: present
-  when: redirectionio_nginx_module_channel != ""
+  when: redirectionio_nginx_module_channel|length > 0
 
 - name: Update yum cache
   yum:
