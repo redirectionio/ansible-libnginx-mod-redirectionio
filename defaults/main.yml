@@ -4,11 +4,13 @@ redirectionio_packages_url: https://packages.redirection.io/
 redirectionio_gpg_key_url: "{{ redirectionio_packages_url }}gpg.key"
 
 # Version management
-# This allow to choose a specific version for your infrastructure
-# Channel can be stable or beta, left empty to use legacy system
-redirectionio_nginx_module_channel: ""
-# Main version of agent, this allow to upgrade safely your system without BC break with a new main version
+# This allows to choose a specific release channel (stable or beta)
+redirectionio_nginx_module_channel: "stable"
+
+# Main version of the nginx module
+# This allows to upgrade safely your system without BC break with a new main version
 redirectionio_nginx_module_main_version: 2
-# Specific version for your agent, use * to use the latest available version
-# Version are of the form: [timestamp]:[version]-[build], if you want a specific version like 2.0.0 you should put *:2.0.0-*
+
+# Specific version of the nginx module. Use * to use the latest available version
+# Versions are of the form: [timestamp]:[version]-[build], if you want a specific version like 2.0.0, you should put *:2.0.0-*
 redirectionio_nginx_module_version: "*"

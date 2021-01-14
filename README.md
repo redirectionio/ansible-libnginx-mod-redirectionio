@@ -17,7 +17,12 @@ ansible-galaxy install redirectionio.nginx_module
 
 ## Role variables
 
-This role does not provide variables.
+By default, this role installs the last stable version of [libnginx-mod-redirectionio](https://github.com/redirectionio/libnginx-mod-redirectionio).
+This behavior can be modified using the following role variables:
+
+ * `redirectionio_nginx_module_channel` (default: `stable`): choose a specific release channel (`stable` or `beta`)
+ * `redirectionio_nginx_module_main_version` (default: `2`): main version of the nginx module. This allows to upgrade safely your system without BC break with a new main version
+ * `redirectionio_nginx_module_version` (default: `*`): specific version of the nginx module. Use `*` to use the latest available version. Valid versions are of the form: `[timestamp]:[version]-[build]`, if you want a specific version like `2.0.0`, you should use `:2.0.0-`
 
 ## Example playbook
 

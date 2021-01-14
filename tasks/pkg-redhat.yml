@@ -5,25 +5,15 @@
     state: present
     key: "{{ redirectionio_gpg_key_url }}"
 
-- name: Define distribution_repository_name
-  set_fact:
-    distribution_repository_name: centos
-  when: ansible_distribution != 'Fedora'
-
-- name: Define distribution_repository_name when the distribution is Fedora
-  set_fact:
-    distribution_repository_name: fedora
-  when: ansible_distribution == 'Fedora'
-
 - name: Install redirection.io repository
   yum_repository:
     name: redirectionio
     description: redirection.io
-    baseurl: "{{ redirectionio_packages_url }}rpm/{{ distribution_repository_name }}_{{ ansible_distribution_major_version }}"
+    baseurl: "{{ redirectionio_packages_url }}rpm/centos_{{ ansible_distribution_major_version }}"
     enabled: yes
     gpgcheck: yes
     state: present
-  when: redirectionio_nginx_module_channel|length == 0
+  when: redirectionio_nginx_module_main_version == 1
 
 - name: Install redirection.io repository
   yum_repository:
@@ -31,11 +21,11 @@
     description: redirection.io
     baseurl: >
       {{ redirectionio_packages_url }}rpm/{{ redirectionio_nginx_module_channel }}/{{ redirectionio_nginx_module_main_version }}/
-      {{ distribution_repository_name }}_{{ ansible_distribution_major_version }}
+      centos_{{ ansible_distribution_major_version }}
     enabled: yes
     gpgcheck: yes
     state: present
-  when: redirectionio_nginx_module_channel|length > 0
+  when: redirectionio_nginx_module_main_version > 1
 
 - name: Update yum cache
   yum:

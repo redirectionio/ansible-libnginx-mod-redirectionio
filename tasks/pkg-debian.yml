@@ -14,7 +14,7 @@
   apt_repository:
     repo: "deb {{ redirectionio_packages_url }}deb {{ ansible_distribution_release }} main"
     state: present
-  when: redirectionio_nginx_module_channel|length == 0
+  when: redirectionio_nginx_module_main_version == 1
 
 - name: Install redirection.io repository
   apt_repository:
@@ -22,7 +22,7 @@
       deb {{ redirectionio_packages_url }}deb/{{ redirectionio_nginx_module_channel }}/{{ redirectionio_nginx_module_main_version }}
       {{ ansible_distribution_release }} main
     state: present
-  when: redirectionio_nginx_module_channel|length > 0
+  when: redirectionio_nginx_module_main_version > 1
 
 - name: Update apt cache
   apt:

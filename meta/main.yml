@@ -10,20 +10,23 @@ galaxy_info:
     - name: Ubuntu
       versions:
         - xenial
-        - artful
         - bionic
         - cuttlefish
+        - disco
+        - eoan
+        - focal
     - name: Debian
       versions:
         - stretch
         - buster
     - name: EL
       versions:
+        - 8
         - 7
-        - 6
   galaxy_tags:
     - http
     - monitoring
     - nginx
     - redirection
+    - seo
 dependencies: []
