@@ -1,12 +1,12 @@
 ---
 
 - name: Add rpm repository key
-  rpm_key:
+  ansible.builtin.rpm_key:
     state: present
     key: "{{ redirectionio_gpg_key_url }}"
 
 - name: Install redirection.io repository
-  yum_repository:
+  ansible.builtin.yum_repository:
     name: redirectionio
     description: redirection.io
     baseurl: "{{ redirectionio_packages_url }}rpm/centos_{{ ansible_distribution_major_version }}"
@@ -16,7 +16,7 @@
   when: redirectionio_nginx_module_main_version == 1
 
 - name: Install redirection.io repository
-  yum_repository:
+  ansible.builtin.yum_repository:
     name: redirectionio
     description: redirection.io
     baseurl: >
@@ -28,10 +28,10 @@
   when: redirectionio_nginx_module_main_version > 1
 
 - name: Update yum cache
-  yum:
+  ansible.builtin.yum:
     update_cache: true
 
 - name: Install libnginx-mod-redirectionio
-  yum:
+  ansible.builtin.yum:
     name: "libnginx-mod-redirectionio-{{ redirectionio_nginx_module_version }}"
     state: present

@@ -1,23 +1,23 @@
 ---
 
 - name: Install the apt-transport-https
-  apt:
+  ansible.builtin.apt:
     name: apt-transport-https
     state: present
 
-- name: import redirection.io apt key
-  apt_key:
+- name: Import redirection.io apt key
+  ansible.builtin.apt_key:
     url: "{{ redirectionio_gpg_key_url }}"
     state: present
 
 - name: Install redirection.io repository
-  apt_repository:
+  ansible.builtin.apt_repository:
     repo: "deb {{ redirectionio_packages_url }}deb {{ ansible_distribution_release }} main"
     state: present
   when: redirectionio_nginx_module_main_version == 1
 
 - name: Install redirection.io repository
-  apt_repository:
+  ansible.builtin.apt_repository:
     repo: >
       deb {{ redirectionio_packages_url }}deb/{{ redirectionio_nginx_module_channel }}/{{ redirectionio_nginx_module_main_version }}
       {{ ansible_distribution_release }} main
@@ -25,10 +25,10 @@
   when: redirectionio_nginx_module_main_version > 1
 
 - name: Update apt cache
-  apt:
+  ansible.builtin.apt:
     update_cache: true
 
 - name: Install libnginx-mod-redirectionio
-  apt:
+  ansible.builtin.apt:
     name: "libnginx-mod-redirectionio={{ redirectionio_nginx_module_version }}"
     state: present
