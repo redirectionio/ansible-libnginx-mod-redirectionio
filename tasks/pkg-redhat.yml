@@ -10,8 +10,8 @@
     name: redirectionio
     description: redirection.io
     baseurl: "{{ redirectionio_packages_url }}rpm/centos_{{ ansible_distribution_major_version }}"
-    enabled: yes
-    gpgcheck: yes
+    enabled: true
+    gpgcheck: true
     state: present
   when: redirectionio_nginx_module_main_version == 1
 
@@ -22,8 +22,8 @@
     baseurl: >
       {{ redirectionio_packages_url }}rpm/{{ redirectionio_nginx_module_channel }}/{{ redirectionio_nginx_module_main_version }}/
       centos_{{ ansible_distribution_major_version }}
-    enabled: yes
-    gpgcheck: yes
+    enabled: true
+    gpgcheck: true
     state: present
   when: redirectionio_nginx_module_main_version > 1
 
