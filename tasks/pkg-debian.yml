@@ -6,21 +6,33 @@
     state: present
 
 - name: Import redirection.io apt key
-  ansible.builtin.apt_key:
-    url: "{{ redirectionio_gpg_key_url }}"
-    state: present
+  ansible.builtin.get_url:
+    url: "https://packages.redirection.io/gpg.key"
+    dest: /etc/apt/keyrings/redirectionio-archive-keyring.asc
+    mode: '0644'
+
+- name: Get dpkg architecture
+  ansible.builtin.command: dpkg --print-architecture
+  register: dpkg_architecture
+  changed_when: false
 
 - name: Install redirection.io repository
   ansible.builtin.apt_repository:
-    repo: "deb {{ redirectionio_packages_url }}deb {{ ansible_distribution_release }} main"
+    repo: >-
+      deb [arch={{ dpkg_architecture.stdout }} signed-by=/etc/apt/keyrings/redirectionio-archive-keyring.asc]
+      {{ redirectionio_packages_url }}deb
+      {{ ansible_distribution_release }}
+      main
     state: present
   when: redirectionio_nginx_module_main_version == 1
 
 - name: Install redirection.io repository
   ansible.builtin.apt_repository:
-    repo: >
-      deb {{ redirectionio_packages_url }}deb/{{ redirectionio_nginx_module_channel }}/{{ redirectionio_nginx_module_main_version }}
-      {{ ansible_distribution_release }} main
+    repo: >-
+      deb [arch={{ dpkg_architecture.stdout }} signed-by=/etc/apt/keyrings/redirectionio-archive-keyring.asc]
+      {{ redirectionio_packages_url }}deb/{{ redirectionio_nginx_module_channel }}/{{ redirectionio_nginx_module_main_version }}
+      {{ ansible_distribution_release }}
+      main
     state: present
   when: redirectionio_nginx_module_main_version > 1
 
